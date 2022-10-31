@@ -36,7 +36,7 @@ class Candidate(AbstractModel):
         }
 
     def to_json(self):
-        party = none
+        party = None
         if self.party:
             party = self.party.to_json()
         return {
