@@ -4,3 +4,4 @@ venv/
 .idea/
 .vscode/
 pyvenv.cfg
+__pycache__

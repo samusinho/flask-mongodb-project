@@ -26,13 +26,13 @@ class Candidate(AbstractModel):
         party_db_ref = None
         if self.party:
             party_db_ref = DBRef(
-                id=ObjectId(self.party._id),
+                id=ObjectId(self.party["_id"]),
                 collection=Party.COLLECTION
             )
         return {
             "name": self.name,
             "identification": self.identification,
-            "party": self.party_db_ref
+            "party": party_db_ref
         }
 
     def to_json(self):
