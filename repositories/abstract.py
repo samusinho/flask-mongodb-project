@@ -9,7 +9,6 @@ from models.abstract import AbstractModel, ElementDoesNotExist
 MONGO_STRING_CONNECTION = "mongodb+srv://samuel:samuel@cluster0.qsk8qkx.mongodb.net/?retryWrites=true&w=majority"
 DATABASE = "g28database"
 
-
 class AbstractRepository(ABC):
     def __init__(self, model: Type[AbstractModel], does_not_exist: Type[ElementDoesNotExist]):
         self._client = MongoClient(MONGO_STRING_CONNECTION)

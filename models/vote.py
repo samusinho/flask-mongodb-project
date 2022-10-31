@@ -27,14 +27,14 @@ class Vote(AbstractModel):
     def prepare_to_save(self):
         return {
             "station": DBRef(
-                id=ObjectId(self.station._id),
+                id=ObjectId(self.station["_id"]),
                 collection=Station.COLLECTION
             ),
             "candidate": DBRef(
-                id=ObjectId(self.candidate._id),
+                id=ObjectId(self.candidate["_id"]),
                 collection=Candidate.COLLECTION
             ),
-            user_id: self.user_id
+            "user_id": self.user_id
         }
 
     def to_json(self):
