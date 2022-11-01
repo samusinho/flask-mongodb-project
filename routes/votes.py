@@ -17,8 +17,17 @@ def create_vote():
 
 @votes_bp.route("/", methods=["GET"])
 def votes():
-    pass
+    return jsonify({
+        "votes": [vote.to_json() for vote in votes_controller.get_all()],
+        "count": votes_controller.count()
+    })
 
 @votes_bp.route("/<string:vote_id>", methods=["GET"])
-def vote():
-    pass
+def vote(vote_id):
+    try:
+        vote = votes_controller.get_by_id(vote_id)
+        return jsonify({"vote": vote.to_json()}), 200
+    except VoteDoesNotExist:
+        return jsonify({
+            "error": "No existe registro de voto"
+        }), 404

@@ -38,8 +38,8 @@ class Vote(AbstractModel):
         }
 
     def to_json(self):
-        station = none
-        candidate = none
+        station = None
+        candidate = None
         if self.station:
             station = self.station.to_json()
         if self.candidate:
@@ -60,7 +60,8 @@ class Vote(AbstractModel):
         return Vote(
             user_id=content.get("user_id"),
             candidate=candidate,
-            station=station
+            station=station,
+            _id=str(content["_id"]) if content.get("_id") else None
         )
 
 
