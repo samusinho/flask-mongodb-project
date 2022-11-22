@@ -23,8 +23,11 @@ class PartyController(AbstractController):
         )
         return self.repository.create(created)
 
-    def update(self, id_item, content):
-        pass
+    def update(self, party_id, content):
+        party = self.get_by_id(party_id)
+        if content["name"]:
+            party.name = content["name"]
+        return self.repository.create(party)
 
     def delete(self, id_item):
         pass

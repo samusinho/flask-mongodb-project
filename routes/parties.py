@@ -34,3 +34,16 @@ def create_party():
         "message": "Partido político creado exitosamente",
         "party": party.__dict__
     }), 201
+
+@parties_bp.route("/<string:party_id>", methods=["PUT"])
+def update_party(party_id):
+    try:
+        party = parties_controller.update(party_id, request.get_json())
+        return jsonify(party.to_json())
+    except PartyDoesNotExist:
+        return jsonify({
+            "message": "Partido político no encontrado"
+        }), 404
+
+
+
