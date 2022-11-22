@@ -12,7 +12,7 @@ def create_candidate():
     candidate = candidates_controller.create(request.get_json())
     return jsonify({
         "message": "Candidato creado exitosamente",
-        "station": candidate.__dict__
+        "candidate": candidate.__dict__
     }), 201
 
 @candidates_bp.route("/", methods=["GET"])
